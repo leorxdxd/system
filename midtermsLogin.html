@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <input type="checkbox" id="switch" checked>
+        <div class="signup">
+            <form  action="loginM.php" method="post">
+                <input type="hidden" name="mode" value="signup">
+                <label >Signup</label>
+                <input type="email"id="signupE" placeholder="Email" name="emailS" autocomplete="off" required>
+                <input type="text" id="signupU" placeholder="Username" name="usernameS" autocomplete="off" required>
+                <input type="password" id="pass" placeholder="Password" name="passwordS" autocomplete="off" required>
+                <input type="password" id="cpass" placeholder="Confirm Password" name="cpasswordS" autocomplete="off" required>
+                <button id="signupbutton">Sign up</button>
+                <p id="notifpass">Weak Password!</p>
+            </form>
+        </div>
+        <div class="login">
+            <form  action="loginM.php" method="post">
+                <input type="hidden" name="mode" value="login">
+                <label for="switch" id="loginL">Login</label>
+                <input type="text" id="loginU" placeholder="Username" name="usernameL" autocomplete="off" required>
+                <input type="password" id="loginP" placeholder="Password" name="passwordL" autocomplete="off" required>
+                <p id="fp">Forgot Password?</p>
+                <button id="loginbtn">Login</button>
+                <p>Don't have account?</p>
+                <label  for="switch"><p id="signupbtn">Sign up</p></label>
+            </form>
+        </div>
+        <div class="Vcodecontainer">
+            <div class="vcode">
+                    <p id="vcodetitle">Enter your email to receive a verification code</p>
+                    <input type="text" id="emailtext" name="mode" required>
+                    <input type="hidden" id="vcodetext" name="mode" required>
+                    <button id="send">Send Verification Code</button>
+            </div>
+        </div>                  
+        <div class="updatepass">
+            <div class="form-container">
+                <form action="loginM.php" id="registrationForm" onsubmit="return validateForm()" method="post">
+                    <input type="hidden" name="mode" value="update">
+                    <label id="changepass">Change Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" oninput="checkPasswordConditions()" autocomplete="off" required>
+                    <p class="error" id="passwordError"></p>
+                    
+                    <ul class="password-conditions" id="passwordConditions">
+                        <li id="minLength">At least 8 characters</li>
+                        <li id="number">At least one number</li>
+                        <li id="specialChar">At least one special character (@$!%*?&.)</li>
+                        <li id="caseCombination">Combination of uppercase and lowercase letters</li> <!-- Added new condition -->
+                    </ul>
+    
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" autocomplete="off"  style="display: none;" required>
+                    <p class="error" id="confirmPasswordError"></p>
+    
+                    <button type="submit" id="updatebtn">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form action="#" method="POST" class="signup-form">
+            <input type="text" id="firstname" placeholder="First Name" name="firstname" required>
+            <input type="text" id="lastname" placeholder="Last Name" name="lastname" required>
+
+            <div class="grp">
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birthday" name="birthday" required title="Birthdate" placeholder="YYYY-MM-DD">
+
+                <!-- <input type="date" id="birthday" name="birthday" required> -->
+            </div>
+            <div class="grp">
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <input type="tel" id="contact" placeholder="Contact Number" name="contact" pattern="[0-9]{10}" required>
+            <input type="text" id="department" placeholder="Department" name="department" required>
+            <input type="text" id="position" placeholder="Position" name="position" required>
+
+            <button type="submit" class="signup-btn">Submit</button>
+        </form>
+    </div>
+    <script src="loginM.js"></script>
+</body>
+</html>
